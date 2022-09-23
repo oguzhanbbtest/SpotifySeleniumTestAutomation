@@ -5,12 +5,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends Methods {
 
     private final Logger logger = LogManager.getLogger(HomePage.class);
-    By homePage = By.xpath("//span[text()='Ana sayfa']");
+    By homePage = By.xpath("//div//a[text()=\"Yakınlarda Çalınanlar\"]");
     By usernameEl = By.cssSelector("figure[data-testid='user-widget-avatar'][title='Oguzhan']");
 
     By library = By.cssSelector("a[href='/collection']");
@@ -22,7 +21,7 @@ public class HomePage extends Methods {
     By playlistText = By.xpath("//input[@value='1. Çalma Listem']");
     By savePlayListName = By.xpath("//button[@data-testid='playlist-edit-details-save-button']");
     By newPlaylistName = By.xpath("//h1[text()='Spotify Listem']");
-    By searchButton = By.xpath("//a[@href='/search']");
+    By searchButton = By.xpath("//form//input[@class=\"Type__TypeElement-goli3j-0 cPwEdQ QO9loc33XC50mMRUCIvf\"]");
     By searchTextBox = By.xpath("//input[@placeholder='Ne dinlemek istiyorsun?']");
     By songsTab = By.xpath("//a[@href='/search/Daft%20Punk/tracks']");
     By firstSong = By.xpath( "(//div[@data-testid='tracklist-row'])[1]//button[@aria-haspopup=\"menu\"]");
@@ -43,8 +42,7 @@ public class HomePage extends Methods {
 
 
    public void isHomePage(){
-        String homePageText = getText(homePage);
-        Assertions.assertEquals("Ana sayfa",homePageText);
+        Assertions.assertTrue(isElementVisible(homePage,5),"You are not in homepage");
         logger.info("[TEST PASSED]");
    }
 
@@ -84,7 +82,7 @@ public class HomePage extends Methods {
    }
 
    public void clickSearchButton(){
-       Assertions.assertTrue(isElementClickable(searchButton,10));
+       Assertions.assertTrue(isElementClickable(searchButton,10),"Arama Kutucuguna Tiklanmiyor");
        clickElement(searchButton);
    }
 

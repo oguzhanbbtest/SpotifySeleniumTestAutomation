@@ -16,6 +16,8 @@ public class Methods{
     // document.querySelector("button[data-testid='login-button']")
     // by.toString() == > findElementWait(by).getText() ile degistirildi
 
+    static By aramaElementi = By.id("\"inputWrapper\"");
+
     WebDriver driver;
     FluentWait<WebDriver> fluentWait;
     JavascriptExecutor jsDriver;
@@ -52,6 +54,8 @@ public class Methods{
         jsDriver.executeScript("arguments[0].click();", webElement);
 
     }
+
+    // f(x,y) = (x + y) = x = 2, y = 3 ---- > f(2,3) = 5;
 
     public void sendKeys(By by, String text){
         findElementWait(by).sendKeys(text);
